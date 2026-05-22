@@ -817,10 +817,6 @@
         <div class="chart-title">Education Level</div>
         <canvas id="eduChart"></canvas>
       </div>
-      <div class="chart-card">
-        <div class="chart-title">Prior ETI Awareness</div>
-        <canvas id="awarenessChart"></canvas>
-      </div>
     </div>
   </div>
 </section>
@@ -1042,6 +1038,48 @@
 </footer>
 
 <script>
+
+ const ctxAge = document.getElementById('ageChart').getContext('2d');
+  new Chart(ctxAge, {
+    type: 'doughnut',
+    data: {
+      labels: ['18 - 34', '35 - 54', '55+'],
+      datasets: [{
+        data: [88.6, 8.0, 3.4],
+        backgroundColor: ['#2d4a7a', '#1a5c3a', '#c8372d'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '70%',
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { family: "'DM Sans', sans-serif" } } }
+      }
+    }
+  });
+
+  // Education Chart
+  const ctxEdu = document.getElementById('eduChart').getContext('2d');
+  new Chart(ctxEdu, {
+    type: 'bar',
+    data: {
+      labels: ['High School', 'Diploma', 'Bachelor', 'Postgrad'],
+      datasets: [{
+        label: '% of Respondents',
+        data: [15.4, 9.7, 72.0, 1.2],
+        backgroundColor: '#1a1a1a',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true, max: 100 } },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
   // ── Simulator Logic ──
   const ppSlider  = document.getElementById('pp');
   const seSlider  = document.getElementById('se');
